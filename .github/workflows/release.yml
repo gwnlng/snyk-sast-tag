@@ -33,7 +33,7 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
       - name: bash lowercase runner os
-        run: echo "RUNNER_OS_ARCH=${{ runner.os@L }}" >> $GITHUB_ENV
+        run: echo "RUNNER_OS_ARCH=${{ runner.os,, }}" >> ${GITHUB_ENV}
       - run: pyinstaller --onefile snyk-sast-tag.py --name snyk-sast-tag-${{ env.RUNNER_OS_ARCH }}
       - name: Release
         uses: softprops/action-gh-release@v2
