@@ -28,7 +28,7 @@ jobs:
           cache: 'pip'
       - run: |
           pip install -r requirements.txt
-          pip install -r pyinstaller
+          pip install pyinstaller
       - run: pyinstaller --onefile snyk-sast-tag.py
       - uses: actions/upload-artifact@v4
         with:

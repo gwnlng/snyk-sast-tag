@@ -15,12 +15,12 @@ jobs:
         uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.10'
           cache: 'pip'
-      - name: Build python script
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install -r pyinstaller
+          pip install pyinstaller
       - run: pyinstaller --onefile snyk-sast-tag.py
       - uses: actions/upload-artifact@v4
         with:
