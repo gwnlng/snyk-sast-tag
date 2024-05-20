@@ -34,12 +34,13 @@ jobs:
           pip install pyinstaller
       - name: Get OS in lowercase
         run: |
+          os="${{ runner.os }}"
           if [[ "${{ runner.os }}" != 'Windows' ]]; then
             lowercase_os=$(echo "${{runner.os}}" | tr '[:upper:]' '[:lower:]')
             echo "OS_ARCH=${lowercase_os}" >> ${GITHUB_ENV} 
           elif [[ "${{ runner.os }}" == 'Windows' ]]; then
             # Use PowerShell for Windows runners
-            lowercase_os=$(powershell -Command "Write-Host (${{runner.os}}).ToLower()")
+            lowercase_os=$(powershell -Command "Write-Host ($os).ToLower()")
             echo "OS_ARCH=${lowercase_os}" >> ${GITHUB_ENV}
           else
             echo "OS_ARCH=${{ runner.os }}" >> ${GITHUB_ENV}
