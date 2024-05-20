@@ -32,20 +32,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pyinstaller
-      - name: Get OS in lowercase
-        run: |
-          os="${{ runner.os }}"
-          if [[ "${{ runner.os }}" != 'Windows' ]]; then
-            lowercase_os=$(echo "${{runner.os}}" | tr '[:upper:]' '[:lower:]')
-            echo "OS_ARCH=${lowercase_os}" >> ${GITHUB_ENV} 
-          elif [[ "${{ runner.os }}" == 'Windows' ]]; then
-            # Use PowerShell for Windows runners
-            lowercase_os=$(powershell -Command "Write-Host ($os).ToLower()")
-            echo "OS_ARCH=${lowercase_os}" >> ${GITHUB_ENV}
-          else
-            echo "OS_ARCH=${{ runner.os }}" >> ${GITHUB_ENV}
-          fi
-      - run: pyinstaller --onefile snyk-sast-tag.py --name snyk-sast-tag-${{ env.OS_ARCH }}
+      - run: pyinstaller --onefile snyk-sast-tag.py --name snyk-sast-tag-${{ runner.os }}
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
