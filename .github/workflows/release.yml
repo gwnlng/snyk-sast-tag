@@ -32,7 +32,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pyinstaller
-      - run: pyinstaller --onefile snyk-sast-tag.py
+      - run: pyinstaller --onefile snyk-sast-tag.py --name snyk-sast-tag-${{ runner.os }}
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
