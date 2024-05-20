@@ -27,8 +27,8 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
       - run: |
-          pip install -r requirements.txt --user
-          pip install -r pyinstaller --user
+          pip install -r requirements.txt
+          pip install -r pyinstaller
       - run: pyinstaller --onefile snyk-sast-tag.py
       - uses: actions/upload-artifact@v4
         with:
