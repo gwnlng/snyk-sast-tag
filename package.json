@@ -1,0 +1,26 @@
+{
+  "name": "snyk-request-manager-test",
+  "version": "1.0.0",
+  "description": "Testing snyk request manager",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run test",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/types": "^3.515.0",
+    "@types/lodash": "^4.14.196",
+    "@types/node": "^20.4.8",
+    "axios": "^1.6.3",
+    "lodash": "4.16.2",
+    "snyk-request-manager": "1.8.3",
+    "tslib": "1.14.1"
+  },
+  "devDependencies": {
+    "@semantic-release/exec": "^6.0.3",
+    "pkg": "^5.8.1",
+    "semantic-release": "^21.0.7"
+  }
+}
